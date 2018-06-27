@@ -7,15 +7,33 @@ import BootstrapVue from 'bootstrap-vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import '@/assets/css/style.css'
+
+import Header from '@/components/header/header'
+import Navbar from '@/components/navbar/navbar'
+import Footer from '@/components/footer/footer'
 
 Vue.use(BootstrapVue);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+
+Vue.component('u-header', Header);
+Vue.component('u-navbar', Navbar);
+Vue.component('u-footer', Footer);
+
+router.beforeEach((to, from , next) => {
+  /* 路由发生变化修改页面title */
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
+  next()
+})
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  render: h => h(App),
   components: { App },
   template: '<App/>'
 })
