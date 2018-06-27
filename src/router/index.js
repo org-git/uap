@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import Home from '@/views/home/Home'
 import Console from '@/views/console/Console'
 import Admin from '@/views/admin/Admin'
-import HelloWorld from '@/components/HelloWorld'
+import NotFound from '@/views/notfound/NotFound'
 
 Vue.use(Router)
 
@@ -12,8 +13,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld,
+      name: 'Home',
+      component: Home,
       meta: {
         title: '首页'
       }
@@ -32,6 +33,14 @@ export default new Router({
       component: Admin,
       meta: {
         title: '后台管理中心'
+      }
+    },
+    {
+      path: '*',
+      name: 'notfound',
+      component: NotFound,
+      meta: {
+        title: '错误'
       }
     }
   ]
