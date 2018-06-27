@@ -7,6 +7,7 @@ import BootstrapVue from 'bootstrap-vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import '@/assets/plugins/iconfont/iconfont.css'
 import '@/assets/css/style.css'
 
 import Header from '@/components/header/header'

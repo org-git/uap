@@ -1,5 +1,5 @@
 <template>
   <section>
-    <h4>app works!</h4>
+    <h4><i class="iconfont icon-wdsy"></i> app works!</h4>
   </section>
 </template>
