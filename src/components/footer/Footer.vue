@@ -1,6 +1,9 @@
 <template>
   <footer>
-    <span class="text-center">Copyright &copy; {{ year }}</span>
+    <p class="text-center">
+      Copyright &copy; {{ year }} &emsp;
+      <a href="http://www.shres.cn" target="_blank">Unified Authentication Platform</a>
+      </p>
   </footer>
 </template>
 

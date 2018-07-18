@@ -22,12 +22,16 @@ Vue.component('u-header', Header);
 Vue.component('u-navbar', Navbar);
 Vue.component('u-footer', Footer);
 
-router.beforeEach((to, from , next) => {
+router.beforeEach((to, from, next) => {
   /* 路由发生变化修改页面title */
   if (to.meta.title) {
     document.title = to.meta.title
   }
-  next()
+  if (to.meta.auth) { // 判断该路由是否需要登录权限
+    next({ path: '/login', query: { redirect: to.fullPath } })
+  } else {
+    next()
+  }
 })
 
 /* eslint-disable no-new */
