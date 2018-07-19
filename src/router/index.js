@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import i18n from '@/locales'
+
 import Home from '@/views/home/Home'
+import Project from '@/views/home/Project'
 import Login from '@/views/home/Login'
 import Console from '@/views/console/Console'
 import Admin from '@/views/admin/Admin'
@@ -17,9 +20,17 @@ export default new Router({
       name: 'home',
       component: Home,
       meta: {
-        title: '首页'
+        title: i18n.t('title')
       },
       children: [
+        {
+          path: '/projects',
+          name: 'projects',
+          component: Project,
+          meta: {
+            title: i18n.t('home.project.title')
+          }
+        }
       ]
     },
     {
@@ -27,7 +38,7 @@ export default new Router({
       name: 'login',
       component: Login,
       meta: {
-        title: '用户登录'
+        title: i18n.t('home.login.title')
       }
     },
     {
@@ -35,7 +46,7 @@ export default new Router({
       name: 'console',
       component: Console,
       meta: {
-        title: '控制台'
+        title: i18n.t('console.title')
       }
     },
     {
@@ -43,7 +54,7 @@ export default new Router({
       name: 'admin',
       component: Admin,
       meta: {
-        title: '后台管理中心'
+        title: i18n.t('admin.title')
       }
     },
     {
@@ -51,7 +62,7 @@ export default new Router({
       name: 'notfound',
       component: NotFound,
       meta: {
-        title: '错误'
+        title: i18n.t('error.title')
       }
     }
   ]

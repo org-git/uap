@@ -2,7 +2,7 @@
   <footer>
     <p class="text-center">
       Copyright &copy; {{ year }} &emsp;
-      <a href="http://www.shres.cn" target="_blank">Unified Authentication Platform</a>
+      <a href="http://www.shres.cn" target="_blank">{{ $t('title') }}</a>
       </p>
   </footer>
 </template>

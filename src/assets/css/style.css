@@ -1,6 +1,6 @@
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
 article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
-body{	font-family: "Microsoft YaHei","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif;}
+body{background:#fff;font-family:Arial,Helvetica,sans-serif;font-size:12px;padding:0 !important;overflow:auto !important}
 nav ul{list-style:none}
 ol,ul{list-style:none;margin:0;padding:0;}
 table{border-collapse:collapse;border-spacing:0;}
@@ -22,7 +22,6 @@ hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padd
 input,select{vertical-align:middle;font-family:'Microsoft Yahei'}
 input[type=text]::-ms-clear,input[type=tel]::-ms-clear,input[type=number]::-ms-clear{display:none}
 textarea{resize:none}
-body{background:#fff;font-family:Arial,Helvetica,sans-serif;font-size:12px;padding:0 !important;overflow:auto !important}
 input:-webkit-autofill{box-shadow:0 0 0 1000px white inset !important;-webkit-box-shadow:0 0 0 1000px white inset !important}
 *,*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
 
@@ -32,5 +31,5 @@ input:-webkit-autofill{box-shadow:0 0 0 1000px white inset !important;-webkit-bo
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  min-height: 760px;
 }

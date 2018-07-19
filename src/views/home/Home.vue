@@ -1,6 +1,7 @@
 <template>
   <section>
-    <h4><i class="iconfont icon-wdsy"></i> app works!</h4>
+    <u-header></u-header>
     <router-view></router-view>
+    <u-footer></u-footer>
   </section>
 </template>

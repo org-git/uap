@@ -1,0 +1,31 @@
+{
+    "title": "Unified Authentication Platform",
+    "home": {
+        "login": {
+            "title": "Login",
+            "username": "UserName",
+            "password": "Password"
+        },
+        "project": {
+            "title": "Projects"
+        }
+    },
+    "console": {
+        "title": "Console Center"
+    },
+    "admin": {
+        "title": "Manager Center"
+    },
+    "error": {
+        "title": "Error"
+    },
+    "week": [
+        "Sun",
+        "Mon",
+        "Tues",
+        "Wed",
+        "Thur",
+        "Fri",
+        "Sat"
+    ]
+}

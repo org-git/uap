@@ -21,15 +21,14 @@ nav.horizontal ul li{ display: inline-block;}/* horizontal menu */
 img{max-width:100%;}
 /*end reset*/
 /*--header start here--*/
-body {
-  background: url(../images/login/banner.jpg)no-repeat;
+.section-login {
+  background: url(../images/login/banner.jpg) no-repeat;
   background-size: cover;
   padding: 70px 0px 70px 0px;
-  min-height: 760px;
   font-family: 'Roboto', sans-serif;
   font-size: 100%;
 }
-.login{
+.login {
   width: 40%;
   background: #fff;
   margin: 0 auto;
@@ -280,7 +279,7 @@ background: url(../images/login/lock.png)no-repeat 8px 14px;
 .login-top .checkbox input:checked + i:after {
 	opacity: 1;
 }
-.login-top input[type="submit"] {
+.login-top button[type="submit"] {
   background: #37588B;
   color: #FFF;
   border:none;

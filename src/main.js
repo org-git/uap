@@ -3,10 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import BootstrapVue from 'bootstrap-vue'
+import VueResource from 'vue-resource'
+import ElementUI from 'element-ui'
 
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import layer  from 'vue-layer';
+import i18n from '@/locales'
+
+import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/plugins/iconfont/iconfont.css'
 import '@/assets/css/style.css'
 
@@ -14,9 +17,13 @@ import Header from '@/components/header/header'
 import Navbar from '@/components/navbar/navbar'
 import Footer from '@/components/footer/footer'
 
-Vue.use(BootstrapVue);
+Vue.use(VueResource);
+Vue.use(ElementUI)
 
 Vue.config.productionTip = false;
+Vue.prototype.$layer = layer(Vue, { msgtime: 3 });
+
+require('./kits/mock')
 
 Vue.component('u-header', Header);
 Vue.component('u-navbar', Navbar);
@@ -36,9 +43,9 @@ router.beforeEach((to, from, next) => {
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
+  i18n,
   router,
   render: h => h(App),
   components: { App },
   template: '<App/>'
-})
+}).$mount('#app')
