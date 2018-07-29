@@ -1,37 +1,47 @@
 <template>
   <nav>
-    <b-navbar toggle="md" type="dark" variant="info">
-      <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-  <b-navbar-brand href="#">NavBar</b-navbar-brand>
-  <b-collapse is-nav id="nav_collapse">
-    <b-navbar-nav>
-      <b-nav-item href="#">Link</b-nav-item>
-      <b-nav-item href="#" disabled>Disabled</b-nav-item>
-    </b-navbar-nav>
-    <!-- Right aligned nav items -->
-    <b-navbar-nav class="ml-auto">
-      <b-nav-form>
-        <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Search"/>
-        <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
-      </b-nav-form>
-
-      <b-nav-item-dropdown text="Lang" right>
-        <b-dropdown-item href="#">EN</b-dropdown-item>
-        <b-dropdown-item href="#">ES</b-dropdown-item>
-        <b-dropdown-item href="#">RU</b-dropdown-item>
-        <b-dropdown-item href="#">FA</b-dropdown-item>
-      </b-nav-item-dropdown>
-
-      <b-nav-item-dropdown right>
-        <!-- Using button-content slot -->
-        <template slot="button-content">
-          <em>User</em>
-        </template>
-        <b-dropdown-item href="#">Profile</b-dropdown-item>
-        <b-dropdown-item href="#">Signout</b-dropdown-item>
-      </b-nav-item-dropdown>
-    </b-navbar-nav>
-  </b-collapse>
-    </b-navbar>
+    <el-menu router unique-opened  mode="horizontal" :default-active="$route.path" @select="selectMenu">
+      <nav-item v-for="(item, index) in menus" :item="item" :navIndex="String(index)" :key="index">
+      </nav-item>
+    </el-menu>
   </nav>
 </template>
+
+<script>
+export default {
+  // props: ['menus'],
+  data() {
+    var menus = [{path:'/', name:'首页', icon: 'iconfont icon-wdsy'}, {path:'/console', name:'控制台', icon: 'iconfont icon-kongzhitai-', child: [{name:'选项'}]}];
+    return {
+      menus
+    };
+  },
+    computed: {
+        /**
+         * 首次进入页面时展开当前页面所属的菜单
+         */
+        onActive() {
+            return this.$router.path;
+        }
+    },
+    methods: {
+        selectMenu(index, indexPath) {
+            let openedMenus = this.$refs.navbar.openedMenus;
+            let openMenuList;
+            // 如果点击的是二级菜单，则获取其后已经打开的菜单
+            if (indexPath.length > 1) {
+                let parentPath = indexPath[indexPath.length - 2];
+                openMenuList = openedMenus.slice(
+                    openedMenus.indexOf(parentPath) + 1
+                );
+            } else {
+                openMenuList = openedMenus;
+            }
+            openMenu = openMenu.reverse();
+            openMenu.forEach(ele => {
+                this.$refs.navbar.closeMenu(ele);
+            });
+        }
+    }
+};
+</script>

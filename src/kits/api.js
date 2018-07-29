@@ -1,12 +1,16 @@
 'use strict';
-import Vue from 'vue';
-import axios from 'axios';
 
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+import axios from 'axios';
+import store from '@/store';
+
 /**
  * 请求拦截器
  */
 axios.interceptors.request.use(function (config) {
+    let token = store.getters.token;
+    if(token) {
+        config.headers.Authorization = token;
+    }
     return config;
 }, function (error) {
     return Promise.reject(error);
@@ -20,9 +24,16 @@ axios.interceptors.response.use(function (response) {
     return Promise.reject(error);
 });
 
+var API_PATH = process.env.API_BASE_URL;
+/**
+ * 创建axios实例
+ */
 const service = axios.create({
-    baseURL: process.env.API_BASE_URL || 'http://localhost:8080',
-    timeout: 6000
+    baseURL: API_PATH,
+    timeout: 6000,
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    }
 });
 
 /**
@@ -42,14 +53,14 @@ export default {
      * GET请求
      */
     get: function (url) {
-        url = this.default.url + url;
+        // url = this.default.url + url;
         return service.get(url);
     },
     /**
      * POST请求
      */
     post: function (url, data) {
-        url = this.default.url + url;
+        // url = this.default.url + url;
         return service.post(url, data);
     }
 }

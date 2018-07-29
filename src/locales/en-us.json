@@ -1,5 +1,6 @@
 {
     "title": "Unified Authentication Platform",
+    "language": "Language",
     "home": {
         "login": {
             "title": "Login",

@@ -3,40 +3,32 @@ import Router from 'vue-router'
 
 import i18n from '@/locales'
 
-import Home from '@/views/home/Home'
-import Project from '@/views/home/Project'
-import Login from '@/views/home/Login'
-import Console from '@/views/console/Console'
-import Admin from '@/views/admin/Admin'
-import NotFound from '@/views/error/NotFound'
-
 Vue.use(Router)
 
 export default new Router({
   // mode: 'history',
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'home',
-      component: Home,
+      component: resolve => require(['@/views/home/Home'], resolve),
+      redirect: '/projects',
       meta: {
         title: i18n.t('title')
       },
-      children: [
-        {
-          path: '/projects',
-          name: 'projects',
-          component: Project,
-          meta: {
-            title: i18n.t('home.project.title')
-          }
+      children: [{
+        path: '/projects',
+        name: 'projects',
+        component: resolve => require(['@/views/home/Project'], resolve),
+        meta: {
+          title: i18n.t('home.project.title'),
+          auth: true
         }
-      ]
+      }]
     },
     {
       path: '/login',
       name: 'login',
-      component: Login,
+      component: resolve => require(['@/views/home/Login'], resolve),
       meta: {
         title: i18n.t('home.login.title')
       }
@@ -44,23 +36,25 @@ export default new Router({
     {
       path: '/console',
       name: 'console',
-      component: Console,
+      component: resolve => require(['@/views/console/Console'], resolve),
       meta: {
-        title: i18n.t('console.title')
+        title: i18n.t('console.title'),
+        auth: true
       }
     },
     {
       path: '/admin',
       name: 'admin',
-      component: Admin,
+      component: resolve => require(['@/views/admin/Admin'], resolve),
       meta: {
-        title: i18n.t('admin.title')
+        title: i18n.t('admin.title'),
+        auth: true
       }
     },
     {
       path: '*',
       name: 'notfound',
-      component: NotFound,
+      component: resolve => require(['@/views/error/NotFound'], resolve),
       meta: {
         title: i18n.t('error.title')
       }

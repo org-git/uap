@@ -6,8 +6,9 @@ import router from './router'
 import VueResource from 'vue-resource'
 import ElementUI from 'element-ui'
 
-import layer  from 'vue-layer';
 import i18n from '@/locales'
+import store from '@/store'
+import { URL } from '@/kits/utils'
 
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/plugins/iconfont/iconfont.css'
@@ -15,27 +16,43 @@ import '@/assets/css/style.css'
 
 import Header from '@/components/header/header'
 import Navbar from '@/components/navbar/navbar'
+import NavItem from '@/components/navbar/navitem'
 import Footer from '@/components/footer/footer'
+import LoginStatus from '@/components/navbar/loginstatus'
 
 Vue.use(VueResource);
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false;
-Vue.prototype.$layer = layer(Vue, { msgtime: 3 });
 
-require('./kits/mock')
+require('@/mock/mock')
 
 Vue.component('u-header', Header);
 Vue.component('u-navbar', Navbar);
+Vue.component('nav-item', NavItem);
 Vue.component('u-footer', Footer);
+Vue.component('u-login-status', LoginStatus);
 
 router.beforeEach((to, from, next) => {
+  let turl = URL.get('redirect');
+  if(turl) {
+    router.push(turl);
+  }
   /* 路由发生变化修改页面title */
   if (to.meta.title) {
     document.title = to.meta.title
   }
   if (to.meta.auth) { // 判断该路由是否需要登录权限
-    next({ path: '/login', query: { redirect: to.fullPath } })
+    if (store.getters.authenticated) {
+      next()
+      return;
+    }
+    next({
+      path: '/login',
+      query: {
+        redirect: to.fullPath
+      }
+    })
   } else {
     next()
   }
@@ -45,7 +62,10 @@ router.beforeEach((to, from, next) => {
 new Vue({
   i18n,
   router,
+  store,
   render: h => h(App),
-  components: { App },
+  components: {
+    App
+  },
   template: '<App/>'
 }).$mount('#app')

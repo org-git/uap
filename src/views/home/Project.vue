@@ -1,23 +1,43 @@
 <template>
     <section>
+        <div class="line"></div>
         <el-row type="flex" class="row-bg" justify="center">
             <el-col :span="12">
                 <el-card>
                     <div slot="header" class="clearfix">
-                        <span>网站列表</span>
-                        <el-button type="text">按钮</el-button>
+                        <el-row>
+                            <el-col :span="16">
+                                <i class="iconfont icon-vip-www"></i>
+                                <span>网站列表</span>
+                            </el-col>
+                            <el-col :span="8" class="text-right">
+                                <el-button icon="el-icon-search" size="mini" circle></el-button>
+                                <el-button type="success" icon="el-icon-check" size="mini" circle></el-button>
+                                <el-button type="warning" icon="el-icon-star-off" size="mini" circle></el-button>
+                            </el-col>
+                        </el-row>
                     </div>
                     <el-table border stripe :data="projects" @row-dblclick="visit">
                         <el-table-column type="index" label="序号" width="50"></el-table-column>
                         <el-table-column header-align="center" label="名称">
                             <template slot-scope="scope">
-                                <i class="el-icon-time"></i>
-                                <span>{{ scope.row.name }}</span>
+                                <a @href="scope.row.url">
+                                    <span>{{ scope.row.name }}</span>
+                                </a>
                             </template>
                         </el-table-column>
                         <el-table-column header-align="center" label="地址">
                             <template slot-scope="scope">
-                                <span>{{ scope.row.url }}</span>
+                                <a @href="scope.row.url">
+                                    <span>{{ scope.row.url }}</span>
+                                </a>
+                            </template>
+                        </el-table-column>
+                        <el-table-column header-align="center" label="操作">
+                            <template slot-scope="scope">
+                                <el-button type="button" size="mini" round @click="visit(scope.row)" title="访问">
+                                    <i class="iconfont icon-fangwen"></i>
+                                </el-button>
                             </template>
                         </el-table-column>
                     </el-table>
@@ -30,6 +50,9 @@
 <script>
 export default {
     data() {
+        console.log(this.$store.getters.language);
+        console.log(this.$store.getters.app);
+        console.log(this.$store.getters.user);
         return {
             projects: [
                 {

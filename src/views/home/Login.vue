@@ -54,13 +54,43 @@ export default {
     methods: {
         login() {
             let data = { username: this.username, password: this.password };
-            var response = UserService.login(data);
-            if(response && response.code == '200') {
-                this.$layer.msg('登录成功', { icon: 5 });
-                this.$router.replace('/');
-            } else {
-                this.$layer.msg(response.message || '登录失败', { icon: 7 });
-            }
+            UserService.login(data).then(
+                function(res) {
+                    let response = res.data;
+                    if (response && response.code == "200") {
+                        this.$store.dispatch('settoken', response.data.token || "");
+                        UserService.userinfo().then(
+                            function(res) {
+                                response = res.data;
+                                if (response && response.code == "200") {
+                                    this.$store.dispatch("login", response.data);
+                                    this.$notify({
+                                        title: "系统提示",
+                                        message: "登录成功",
+                                        type: "success",
+                                        position: "bottom-right"
+                                    });
+                                    this.$router.replace("/");
+                                } else {
+                                    this.$notify({
+                                        title: "系统提示",
+                                        message: res.message || "登录失败",
+                                        type: "warning",
+                                        position: "bottom-right"
+                                    });
+                                }
+                            }.bind(this)
+                        );
+                    } else {
+                        this.$notify({
+                            title: "系统提示",
+                            message: res.message || "获取token失败",
+                            type: "warning",
+                            position: "bottom-right"
+                        });
+                    }
+                }.bind(this)
+            );
         }
     }
 };

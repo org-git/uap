@@ -1,16 +1,9 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 
-Vue.use(VueI18n)
+import { LOCAL_LANGUAGE, DEFAULT_LANG } from '@/kits/keys';
 
-/**
- * 默认语言
- */
-const DEFAULT_LANG = 'zh';
-/**
- * 存储键名
- */
-const LOCALE_KEY = 'localeLanguage';
+Vue.use(VueI18n)
 
 const locales = {
   zh: require('./zh-cn.json'),
@@ -24,12 +17,12 @@ const i18n = new VueI18n({
 
 export const setup = lang => {
   if (lang === undefined) {
-    lang = window.localStorage.getItem(LOCALE_KEY)
+    lang = window.localStorage.getItem(LOCAL_LANGUAGE)
     if (locales[lang] === undefined) {
       lang = DEFAULT_LANG
     }
   }
-  window.localStorage.setItem(LOCALE_KEY, lang)
+  window.localStorage.setItem(LOCAL_LANGUAGE, lang)
 
   Object.keys(locales).forEach(lang => {
     document.body.classList.remove(`lang-${lang}`)
