@@ -17,7 +17,7 @@
                             </el-col>
                         </el-row>
                     </div>
-                    <el-table border stripe :data="projects" @row-dblclick="visit">
+                    <el-table border stripe :data="projects"> <!-- @row-dblclick="visit"> -->
                         <el-table-column type="index" label="序号" width="50"></el-table-column>
                         <el-table-column header-align="center" label="名称">
                             <template slot-scope="scope">
@@ -37,6 +37,9 @@
                             <template slot-scope="scope">
                                 <el-button type="button" size="mini" round @click="visit(scope.row)" title="访问">
                                     <i class="iconfont icon-fangwen"></i>
+                                </el-button>
+                                <el-button type="button" size="mini" round @click="share(scope.row)" title="访问">
+                                    <i class="iconfont icon-share1"></i>
                                 </el-button>
                             </template>
                         </el-table-column>
@@ -69,6 +72,14 @@ export default {
     methods: {
         visit(row, event) {
             window.location.href = row.url;
+        },
+        share(row, event) {
+            this.$notify({
+                title: "系统提示",
+                message: "分享成功",
+                type: "success",
+                position: "bottom-right"
+            });
         }
     }
 };

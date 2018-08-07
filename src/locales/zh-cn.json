@@ -1,11 +1,23 @@
 {
     "title": "统一认证平台",
     "language": "语言",
+    "message": "消息",
+    "login": {
+        "title": "用户登录",
+        "username": "用户名",
+        "password": "密码",
+        "abbr": "登录"
+    },
+    "logout": {
+        "abbr": "注销"
+    },
+    "register": {
+        "title": "用户注册",
+        "abbr": "注册"
+    },
     "home": {
-        "login": {
-            "title": "用户登录",
-            "username": "用户名",
-            "password": "密码"
+        "index": {
+            "title": "首页"
         },
         "project": {
             "title": "项目列表"

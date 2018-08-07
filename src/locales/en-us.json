@@ -1,11 +1,23 @@
 {
     "title": "Unified Authentication Platform",
     "language": "Language",
+    "message": "Message",
+    "login": {
+        "title": "Login",
+        "username": "UserName",
+        "password": "Password",
+        "abbr": "Login"
+    },
+    "logout": {
+        "abbr": "Logout"
+    },
+    "register": {
+        "title": "Register",
+        "abbr": "Register"
+    },
     "home": {
-        "login": {
-            "title": "Login",
-            "username": "UserName",
-            "password": "Password"
+        "index": {
+            "title": "Index"
         },
         "project": {
             "title": "Projects"

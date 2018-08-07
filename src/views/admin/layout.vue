@@ -1,0 +1,15 @@
+<template>
+  <el-container>
+    <el-header>
+    </el-header>
+    <el-container>
+      <el-aside></el-aside>
+      <el-main>
+        <router-view></router-view>
+      </el-main>
+    </el-container>
+    <el-footer>
+      <u-footer></u-footer>
+    </el-footer>
+  </el-container>
+</template>

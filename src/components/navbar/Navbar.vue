@@ -1,27 +1,38 @@
 <template>
-  <nav>
-    <el-menu router unique-opened  mode="horizontal" :default-active="$route.path" @select="selectMenu">
-      <nav-item v-for="(item, index) in menus" :item="item" :navIndex="String(index)" :key="index">
-      </nav-item>
+    <el-menu router unique-opened :mode="mode" ref="navbar" :default-active="$route.path" @select="selectMenu">
+        <nav-item v-for="item in menus" :item="item" :key="item.path" :index="item.path">
+        </nav-item>
     </el-menu>
-  </nav>
 </template>
 
 <script>
 export default {
-  // props: ['menus'],
-  data() {
-    var menus = [{path:'/', name:'首页', icon: 'iconfont icon-wdsy'}, {path:'/console', name:'控制台', icon: 'iconfont icon-kongzhitai-', child: [{name:'选项'}]}];
-    return {
-      menus
-    };
-  },
+    props: ["mode"],
+    data() {
+        var menus = [
+            {
+                id: "1",
+                path: "/",
+                name: this.$t("home.index.title"),
+                icon: "iconfont icon-wdsy"
+            },
+            {
+                id: "2",
+                path: "/console/dashboard",
+                name: this.$t("console.title"),
+                icon: "iconfont icon-kongzhitai-"
+            }
+        ];
+        return {
+            menus
+        };
+    },
     computed: {
         /**
          * 首次进入页面时展开当前页面所属的菜单
          */
         onActive() {
-            return this.$router.path;
+            return this.$route.path;
         }
     },
     methods: {
@@ -37,8 +48,8 @@ export default {
             } else {
                 openMenuList = openedMenus;
             }
-            openMenu = openMenu.reverse();
-            openMenu.forEach(ele => {
+            // openMenu = openMenuList.reverse();
+            openMenuList.reverse().forEach(ele => {
                 this.$refs.navbar.closeMenu(ele);
             });
         }

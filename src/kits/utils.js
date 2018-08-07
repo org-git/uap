@@ -86,7 +86,7 @@ export var URL = {
         var url = url ? url : location.href;
         var result = reg.exec(url);
         if (result) {
-            return result[2];
+            return decodeURIComponent(result[2]);
         } else {
             return '';
         }

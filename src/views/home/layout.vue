@@ -1,5 +1,5 @@
 <template>
   <section>
-    <h4>404 Not Found...</h4>
+    <router-view></router-view>
   </section>
 </template>

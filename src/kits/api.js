@@ -2,11 +2,16 @@
 
 import axios from 'axios';
 import store from '@/store';
+import { getIPs } from '@/kits/utils';
 
 /**
  * 请求拦截器
  */
 axios.interceptors.request.use(function (config) {
+    let ip = getIPs(ips => {
+        console.log(ips);
+    });
+    
     let token = store.getters.token;
     if(token) {
         config.headers.Authorization = token;

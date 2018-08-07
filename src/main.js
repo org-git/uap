@@ -8,7 +8,6 @@ import ElementUI from 'element-ui'
 
 import i18n from '@/locales'
 import store from '@/store'
-import { URL } from '@/kits/utils'
 
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/plugins/iconfont/iconfont.css'
@@ -19,6 +18,8 @@ import Navbar from '@/components/navbar/navbar'
 import NavItem from '@/components/navbar/navitem'
 import Footer from '@/components/footer/footer'
 import LoginStatus from '@/components/navbar/loginstatus'
+import Toolbar from '@/components/navbar/toolbar'
+import Lang from '@/components/navbar/lang'
 
 Vue.use(VueResource);
 Vue.use(ElementUI)
@@ -32,12 +33,10 @@ Vue.component('u-navbar', Navbar);
 Vue.component('nav-item', NavItem);
 Vue.component('u-footer', Footer);
 Vue.component('u-login-status', LoginStatus);
+Vue.component('u-toolbar', Toolbar);
+Vue.component('u-lang', Lang);
 
 router.beforeEach((to, from, next) => {
-  let turl = URL.get('redirect');
-  if(turl) {
-    router.push(turl);
-  }
   /* 路由发生变化修改页面title */
   if (to.meta.title) {
     document.title = to.meta.title

@@ -1,6 +1,6 @@
 <template>
-    <el-menu router unique-opened mode="horizontal" :default-active="$route.path">
-        <nav-item v-for="(item, index) in menus" :item="item" :navIndex="String(index)" :key="index">
+    <el-menu router unique-opened mode="horizontal" trigger="click" :default-active="$route.path">
+        <nav-item v-for="(item, index) in menus" :item="item" :key="index">
         </nav-item>
     </el-menu>
 </template>
@@ -11,41 +11,38 @@ export default {
         let menus = [];
         if (this.$store.getters.authenticated) {
             menus.push({
+                id: '11',
                 name: this.$store.getters.user.name,
+                icon: 'iconfont icon-yonghuming',
                 child: [
                     {
-                        path: "/profile",
+                        id: '111',
+                        path: "profile",
                         name: "个人资料",
                         icon: "iconfont icon-profile"
                     }
                 ]
             });
             menus.push({
-                path: "/loginout",
-                name: "注销",
+                id: '12',
+                path: "loginout",
+                name: this.$t('logout.abbr'),
                 icon: "iconfont icon-exit"
             });
         } else {
             menus.push({
-                path: "/login",
-                name: "登录",
+                id: '21',
+                path: "login",
+                name: this.$t('login.abbr'),
                 icon: "iconfont icon-denglu"
             });
             menus.push({
-                path: "/register",
-                name: "注册",
+                id: '22',
+                path: "register",
+                name: this.$t('register.abbr'),
                 icon: "iconfont icon-register"
             });
         }
-        menus.push({
-            path: "/language",
-            name: this.$t("language"),
-            icon: "iconfont icon-yuyan",
-            child: [
-                { name: "中文", icon: "iconfont icon-zhongwen" },
-                { name: "English", icon: "iconfont icon-yingyuzuowensousuo" }
-            ]
-        });
         return {
             menus
         };

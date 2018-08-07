@@ -1,22 +1,74 @@
-import '@/kits/keys';
-import { LOCAL_LANGUAGE, DEFAULT_LANG, ACCESS_TOKEN } from '@/kits/keys';
+import '@/kits/keys'
+import {
+  DEFAULT_LANG
+} from '@/kits/keys'
 
 export default {
-    state: {
-        language: window.localStorage.getItem(LOCAL_LANGUAGE) || DEFAULT_LANG
+  state: {
+    /** 
+     * token
+     */
+    token: '',
+    /** 
+     * 语言
+     */
+    language: DEFAULT_LANG
+  },
+  mutations: {
+    /**
+     * 设置语言
+     * 
+     * @param {any} state 
+     * @param {any} lang 
+     */
+    setlang(state, lang) {
+      state.language = lang.lang || DEFAULT_LANG;
     },
-    mutations: {
-        settoken(state, token) {
-            window.localStorage.removeItem(ACCESS_TOKEN);
-            if(!token) {
-                return;
-            }
-            window.localStorage.setItem(ACCESS_TOKEN, token);
-        }
+    /**
+     * 设置token
+     * 
+     * @param {any} state 
+     * @param {any} token 
+     * @returns 
+     */
+    settoken(state, token) {
+      state.token = token || '';
     },
-    actions: {
-        settoken(context, token) {
-            context.commit('settoken', token);
-        }
+    /**
+     * 删除token
+     * 
+     * @param {any} state 
+     */
+    removetoken(state) {
+      state.token = '';
     }
+  },
+  actions: {
+    /**
+     * 设置语言
+     * 
+     * @param {any} context 
+     * @param {any} lang 
+     */
+    setlang(context, lang) {
+      context.commit('setlang', lang);
+    },
+    /**
+     * 设置token
+     * 
+     * @param {any} context 
+     * @param {any} token 
+     */
+    settoken(context, token) {
+      context.commit('settoken', token);
+    },
+    /**
+     * 删除token
+     * 
+     * @param {any} context 
+     */
+    removetoken(context) {
+      context.commit('removetoken');
+    }
+  }
 }

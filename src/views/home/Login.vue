@@ -27,7 +27,7 @@
                         <div class="login-para"></div>
                         <div class="clear"> </div>
                     </div>
-                    <button type="submit" v-on:click='login'>{{ $t('home.login.title') }}</button>
+                    <button type="submit" v-on:click='login'>{{ $t('login.title') }}</button>
                 </div>
             </div>
         </div>
