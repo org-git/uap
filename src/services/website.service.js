@@ -10,8 +10,8 @@ export  default {
      * @param {any} data 入参
      * @returns 
      */
-    getprojects(data) {
-        data.id = store.getters.user.id;
-        return api.post('/api/projects', data);
+    getAll(data) {
+        // data.id = store.getters.user.id;
+        return api.post('/api/websites', data);
     }
 }

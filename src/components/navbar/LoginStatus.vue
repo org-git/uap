@@ -12,7 +12,7 @@ export default {
         if (this.$store.getters.authenticated) {
             menus.push({
                 id: '11',
-                name: this.$store.getters.user.name,
+                name: this.$store.getters.user.username,
                 icon: 'iconfont icon-yonghuming',
                 child: [
                     {
@@ -25,20 +25,20 @@ export default {
             });
             menus.push({
                 id: '12',
-                path: "loginout",
+                path: "/loginout",
                 name: this.$t('logout.abbr'),
                 icon: "iconfont icon-exit"
             });
         } else {
             menus.push({
                 id: '21',
-                path: "login",
+                path: "/login",
                 name: this.$t('login.abbr'),
                 icon: "iconfont icon-denglu"
             });
             menus.push({
                 id: '22',
-                path: "register",
+                path: "/register",
                 name: this.$t('register.abbr'),
                 icon: "iconfont icon-register"
             });

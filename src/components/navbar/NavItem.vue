@@ -1,13 +1,13 @@
 <template>
     <!-- 如果当前item中有子节点 -->
-    <el-submenu v-if="item.child && item.child.length" :index="item.id">
+    <el-submenu v-if="item.children && item.children.length" :index="item.id">
         <!-- 创建菜单分组 -->
         <template slot="title">
             <i v-if="item.icon && item.icon.length" :class="item.icon"></i>
             <span slot="title">{{ item.name }}</span>
         </template>
         <!-- 递归调用自身，直到subItem不含有子节点 -->
-        <nav-item v-for="subitem in item.child" :key="subitem.id" :index="subitem.id" :item="subitem">
+        <nav-item v-for="subitem in item.children" :key="subitem.id" :index="subitem.id" :item="subitem">
         </nav-item>
     </el-submenu>
 

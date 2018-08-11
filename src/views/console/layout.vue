@@ -1,11 +1,11 @@
 <template>
-  <el-container style="min-height: 480px;">
+  <el-container style="min-height: 600px;">
     <el-header>
       <u-header></u-header>
     </el-header>
     <el-container>
       <el-aside>
-        <el-menu router unique-opened :default-active="$route.path" v-loading="loading">
+        <el-menu router unique-opened :default-active="$route.path" v-loading="loading" :collapse="isCollapse">
           <nav-item v-for="item in menus" :item="item" :key="item.path" :index="item.path">
           </nav-item>
         </el-menu>
@@ -28,7 +28,7 @@ export default {
         let loading = true;
         let menus = [];
         let that = this;
-        MenuService.getmenus().then(function(res) {
+        MenuService.getAll().then(function(res) {
             that.loading = false;
             let response = res.data;
             if (response && response.code === "200") {
@@ -42,7 +42,8 @@ export default {
                 });
             }
         });
-        return { menus, loading };
+
+        return { loading, isCollapse: false, menus };
     }
 };
 </script>

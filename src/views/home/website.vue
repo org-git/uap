@@ -17,7 +17,7 @@
                             </el-col>
                         </el-row>
                     </div>
-                    <el-table border stripe :data="projects"> <!-- @row-dblclick="visit"> -->
+                    <el-table border stripe :data="websites"> <!-- @row-dblclick="visit"> -->
                         <el-table-column type="index" label="序号" width="50"></el-table-column>
                         <el-table-column header-align="center" label="名称">
                             <template slot-scope="scope">
@@ -57,7 +57,7 @@ export default {
         console.log(this.$store.getters.app);
         console.log(this.$store.getters.user);
         return {
-            projects: [
+            websites: [
                 {
                     name: "github",
                     url: "http://github.com"

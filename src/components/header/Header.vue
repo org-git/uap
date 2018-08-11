@@ -1,10 +1,10 @@
 <template>
   <header>
     <el-row>
-      <el-col :span="15">
+      <el-col :span="14">
         <u-navbar mode="horizontal"></u-navbar>
       </el-col>
-      <el-col :span="9" class="text-right">
+      <el-col :span="10" class="text-right">
         <el-menu mode="horizontal" class="pull-left">
           <el-menu-item index="1">
             <u-toolbar></u-toolbar>

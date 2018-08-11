@@ -22,12 +22,12 @@ export default {
       title: i18n.t('register.title')
     }
   },{
-    path: 'projects',
-    name: 'projects',
+    path: 'websites',
+    name: 'websites',
     redirect: '/',
-    component: resolve => require(['@/views/home/project'], resolve),
+    component: resolve => require(['@/views/home/website'], resolve),
     meta: {
-      title: i18n.t('home.project.title'),
+      title: i18n.t('home.website.title'),
       auth: true
     }
   }]

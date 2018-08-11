@@ -9,9 +9,9 @@ export default {
   state: {
     id: '',
     /** 
-     * 当前用户名
+     * 用户名
      */
-    name: '',
+    username: '',
     /** 
      * 头像
      */
@@ -20,6 +20,10 @@ export default {
      * 性别
      */
     sex: 1,
+    /** 
+     * 真实姓名
+     */
+    realname: '',
     /** 
      * 出生日期
      */
@@ -47,9 +51,10 @@ export default {
      */
     login(state, user) {
       state.id = user.id || '';
-      state.name = user.username || '';
+      state.username = user.username || '';
       state.avatar = user.avatar || '';
       state.sex = user.sex || 1;
+      state.realname = user.realname || '';
       state.birthday = user.birthday || new Date().toLocaleDateString();
       state.mobile = user.mobile || '';
       state.email = user.email || '';
@@ -65,6 +70,7 @@ export default {
       state.name = '';
       state.avatar = '';
       state.sex = '';
+      state.realname = '';
       state.birthday = '';
       state.mobile = '';
       state.email = '';
