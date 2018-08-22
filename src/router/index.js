@@ -9,5 +9,9 @@ import error from '@/router/error'
 Vue.use(Router)
 
 export default new Router({
-  routes: [home, console, admin, error]
+  routes: [{
+    path: '/',
+    name: '/',
+    component: resolve => require(['@/views/layout'], resolve)
+  }, home, console, admin, error]
 });

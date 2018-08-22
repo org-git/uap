@@ -20,6 +20,7 @@ import Footer from '@/components/footer/footer'
 import LoginStatus from '@/components/navbar/loginstatus'
 import Toolbar from '@/components/navbar/toolbar'
 import Lang from '@/components/navbar/lang'
+import Pagination from "@/components/pagination";
 
 Vue.use(VueResource);
 Vue.use(ElementUI)
@@ -35,6 +36,7 @@ Vue.component('u-footer', Footer);
 Vue.component('u-login-status', LoginStatus);
 Vue.component('u-toolbar', Toolbar);
 Vue.component('u-lang', Lang);
+Vue.component('u-pagination', Pagination);
 
 router.beforeEach((to, from, next) => {
   /* 路由发生变化修改页面title */

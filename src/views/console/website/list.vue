@@ -16,7 +16,7 @@
                 </el-form-item>
             </el-form>
         </el-row>
-        <el-table border stripe :data="websites" v-loading="loading" :default-sort="{prop: 'name', order: 'ascending'}">
+        <el-table border stripe :data="rows" v-loading="loading" :default-sort="{prop: 'name', order: 'ascending'}">
             <el-table-column type="index" label="序号" width="50"></el-table-column>
             <el-table-column header-align="center" label="名称" sortable>
                 <template slot-scope="scope">
@@ -55,6 +55,7 @@
                 </template>
             </el-table-column>
         </el-table>
+        <u-pagination :rows="rows" :total="total"></u-pagination>
     </section>
 </template>
 
@@ -63,7 +64,7 @@ import WebsiteService from "@/services/website.service";
 import uenum from "@/kits/enum";
 
 export default {
-    data() {
+    data () {
         let loading = false;
         let status = [{ value: 0, text: "全部" }];
         uenum.websitestatus.forEach(ele => {
@@ -73,15 +74,19 @@ export default {
             name: "",
             status: 0
         };
-        let websites = [];
+        let total = 0;
+        let rows = [];
 
-        return { loading, status, search, websites };
+        return { loading, status, search, total, rows };
+    },
+    created: function () {
+        this.onSearch();
     },
     methods: {
         /**
          * 获取网站状态名称
          */
-        getStatusName(status) {
+        getStatusName (status) {
             let name = "";
             uenum.websitestatus.forEach(ele => {
                 if (ele.value === status) {
@@ -93,15 +98,16 @@ export default {
         /**
          * 查询
          */
-        onSearch() {
+        onSearch () {
             let that = this;
             that.loading = true;
 
-            WebsiteService.getAll(that.search).then(function(res) {
+            WebsiteService.getAll(that.search).then(function (res) {
                 that.loading = false;
                 let response = res.data;
                 if (response && response.code === "200") {
-                    that.websites = response.data;
+                    that.total = response.data.total || 0;
+                    that.rows = response.data.rows || [];
                 } else {
                     that.$notify({
                         title: "系统提示",
@@ -115,7 +121,7 @@ export default {
         /**
          * 编辑
          */
-        onEdit(website) {
+        onEdit (website) {
             this.$router.push({
                 path: "/console/website/edit",
                 query: {

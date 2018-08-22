@@ -47,7 +47,7 @@
 import uenum from "@/kits/enum";
 
 export default {
-    data() {
+    data () {
         let user = this.$store.getters.user;
         user.avatar = require("@/assets/images/logo.png");
         return {
@@ -58,7 +58,7 @@ export default {
         /**
          * 获取性别名称
          */
-        getSexName(sex) {
+        getSexName (sex) {
             let name = "";
             uenum.sex.forEach(ele => {
                 if (ele.value === sex) {

@@ -84,7 +84,7 @@ Mock.mock(API_PATH + '/api/menus', (req, res) => {
         icon: 'iconfont icon-biaoshilei_jiaoseqiehuan'
       }, {
         id: Mock.Random.guid().toLowerCase().trim(),
-        path: '/console/role',
+        path: '/console/role/authorize',
         name: '角色授权',
         icon: 'iconfont icon-jiaosequanxian'
       }]
@@ -95,13 +95,13 @@ Mock.mock(API_PATH + '/api/menus', (req, res) => {
       icon: 'iconfont icon-xiaoxi',
       children: [{
           id: Mock.Random.guid().toLowerCase().trim(),
-          path: '/console/messages/unread',
+          path: '/console/message/unread',
           name: '未读消息',
           icon: 'iconfont icon-wdsy'
         },
         {
           id: Mock.Random.guid().toLowerCase().trim(),
-          path: '/console/messages/read',
+          path: '/console/message/read',
           name: '已读消息',
           icon: 'iconfont icon-wdsy'
         }
@@ -169,7 +169,10 @@ Mock.mock(API_PATH + '/api/websites', (req, res) => {
   ];
   return {
     code: '200',
-    data: data,
+    data: {
+      total: 12,
+      rows: data
+    },
     message: '请求成功'
   }
 });
@@ -210,7 +213,10 @@ Mock.mock(API_PATH + '/api/logs', (req, res) => {
   }];
   return {
     code: '200',
-    data: data,
+    data: {
+      total: 12,
+      rows: data
+    },
     message: '请求成功'
   }
 });

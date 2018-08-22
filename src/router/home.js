@@ -3,6 +3,7 @@ import i18n from '@/locales'
 export default {
   path: '/',
   name: 'home',
+  redirect: 'website',
   component: resolve => require(['@/views/home/layout'], resolve),
   meta: {
     title: i18n.t('title')
@@ -21,10 +22,9 @@ export default {
     meta: {
       title: i18n.t('register.title')
     }
-  },{
-    path: 'websites',
-    name: 'websites',
-    redirect: '/',
+  }, {
+    path: 'website',
+    name: 'website',
     component: resolve => require(['@/views/home/website'], resolve),
     meta: {
       title: i18n.t('home.website.title'),

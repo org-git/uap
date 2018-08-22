@@ -7,14 +7,14 @@
 
 <script>
 export default {
-    data() {
+    data () {
         let menus = [];
         if (this.$store.getters.authenticated) {
             menus.push({
                 id: '11',
                 name: this.$store.getters.user.username,
                 icon: 'iconfont icon-yonghuming',
-                child: [
+                children: [
                     {
                         id: '111',
                         path: "profile",
