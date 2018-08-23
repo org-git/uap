@@ -23,11 +23,11 @@ import Lang from '@/components/navbar/lang'
 import Pagination from "@/components/pagination";
 
 Vue.use(VueResource);
-Vue.use(ElementUI)
+Vue.use(ElementUI);
 
 Vue.config.productionTip = false;
 
-require('@/mock/mock')
+require('@/mock/mock');
 
 Vue.component('u-header', Header);
 Vue.component('u-navbar', Navbar);

@@ -13,13 +13,20 @@
                         </el-table-column>
                         <el-table-column>
                             <template slot-scope="scope">
-                                <el-tag type="success" size="mini">{{ scope.row.sender }}</el-tag>
-                                <span>{{ scope.row.title }}</span>
+                                <el-popover trigger="hover" placement="bottom-start" width="300">
+                                    <p>{{ scope.row.text }}</p>
+                                    <div slot="reference" class="name-wrapper">
+                                        <el-tag type="success" size="mini">{{ scope.row.sender }}</el-tag>
+                                        <router-link :to="{path: '/console/message/detail', query: { id: scope.row.id }}">
+                                            <span>{{ scope.row.title }}</span>
+                                        </router-link>
+                                    </div>
+                                </el-popover>
                             </template>
                         </el-table-column>
-                        <el-table-column width="100">
+                        <el-table-column width="160">
                             <template slot-scope="scope">
-                                <span>{{ scope.row.date }}</span>
+                                <span>{{ scope.row.sendert }}</span>
                             </template>
                         </el-table-column>
                     </el-table>
@@ -33,13 +40,13 @@
 import MessageService from "@/services/message.service";
 
 export default {
-    data() {
+    data () {
         let loading = false;
         let notices = [];
         let that = this;
         that.loading = true;
 
-        MessageService.getAll().then(function(res) {
+        MessageService.getAll().then(function (res) {
             that.loading = false;
             let response = res.data;
             if (response && response.code === "200") {

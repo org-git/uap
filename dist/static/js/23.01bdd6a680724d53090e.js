@@ -1,0 +1,2 @@
+webpackJsonp([23],{MF0C:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var s={render:function(){var e=this.$createElement;return(this._self._c||e)("section",[this._v("\n    "+this._s(this.$t("admin.title"))+"\n")])},staticRenderFns:[]},l=n("VU/8")(null,s,!1,null,null,null);t.default=l.exports}});
+//# sourceMappingURL=23.01bdd6a680724d53090e.js.map

@@ -181,19 +181,22 @@ Mock.mock(API_PATH + '/api/messages', (req, res) => {
       id: Mock.Random.guid().toLowerCase().trim(),
       title: Mock.mock('@ctitle'),
       text: Mock.mock('@cparagraph'),
-      sender: Mock.mock('@cname')
+      sender: Mock.mock('@cname'),
+      sendert: Mock.mock('@now')
     },
     {
       id: Mock.Random.guid().toLowerCase().trim(),
       title: Mock.mock('@ctitle'),
       text: Mock.mock('@cparagraph'),
-      sender: Mock.mock('@cname')
+      sender: Mock.mock('@cname'),
+      sendert: Mock.mock('@now')
     },
     {
       id: Mock.Random.guid().toLowerCase().trim(),
       title: Mock.mock('@ctitle'),
       text: Mock.mock('@cparagraph'),
-      sender: Mock.mock('@cname')
+      sender: Mock.mock('@cname'),
+      sendert: Mock.mock('@now')
     }
   ];
   return {
@@ -207,7 +210,21 @@ Mock.mock(API_PATH + '/api/logs', (req, res) => {
     id: Mock.Random.guid().toLowerCase().trim(),
     userid: Mock.Random.guid().toLowerCase().trim(),
     ip: Mock.Random.ip(),
-    creatat: Mock.Random.now(),
+    created: Mock.Random.now(),
+    title: Mock.mock('@ctitle'),
+    text: Mock.Random.csentence()
+  }, {
+    id: Mock.Random.guid().toLowerCase().trim(),
+    userid: Mock.Random.guid().toLowerCase().trim(),
+    ip: Mock.Random.ip(),
+    created: Mock.Random.now(),
+    title: Mock.mock('@ctitle'),
+    text: Mock.Random.csentence()
+  }, {
+    id: Mock.Random.guid().toLowerCase().trim(),
+    userid: Mock.Random.guid().toLowerCase().trim(),
+    ip: Mock.Random.ip(),
+    created: Mock.Random.now(),
     title: Mock.mock('@ctitle'),
     text: Mock.Random.csentence()
   }];

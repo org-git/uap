@@ -17,7 +17,7 @@ export default {
                 children: [
                     {
                         id: '111',
-                        path: "profile",
+                        path: "/console/profile",
                         name: "个人资料",
                         icon: "iconfont icon-profile"
                     }
@@ -25,7 +25,7 @@ export default {
             });
             menus.push({
                 id: '12',
-                path: "/loginout",
+                path: "/logout",
                 name: this.$t('logout.abbr'),
                 icon: "iconfont icon-exit"
             });

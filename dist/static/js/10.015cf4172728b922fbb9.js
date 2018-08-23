@@ -1,0 +1,2 @@
+webpackJsonp([10],{lKPq:function(e,t,i){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n={render:function(){var e=this.$createElement,t=this._self._c||e;return t("el-form",{attrs:{"label-position":"right","label-width":"100px",model:this.website,size:"mini"}},[t("el-form-item",{attrs:{label:"网站名称"}},[this._v("\n        "+this._s(this.website.name)+"\n    ")])],1)},staticRenderFns:[]},s=i("VU/8")({data:function(){var e={name:"test"};return{website:e}}},n,!1,null,null,null);t.default=s.exports}});
+//# sourceMappingURL=10.015cf4172728b922fbb9.js.map

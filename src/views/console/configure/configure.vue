@@ -1,3 +1,3 @@
 <template>
-  <section></section>
+  <section>配置维护</section>
 </template>

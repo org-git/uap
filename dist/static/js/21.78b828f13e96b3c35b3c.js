@@ -1,0 +1,2 @@
+webpackJsonp([21],{Zyqp:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var l={render:function(){var e=this.$createElement;return(this._self._c||e)("section",[this._v("配置维护")])},staticRenderFns:[]},r=n("VU/8")(null,l,!1,null,null,null);t.default=r.exports}});
+//# sourceMappingURL=21.78b828f13e96b3c35b3c.js.map

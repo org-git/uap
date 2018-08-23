@@ -18,33 +18,24 @@
     </el-row>
     <el-table border stripe :data="rows" v-loading="loading" :default-sort="{prop: 'name', order: 'ascending'}">
       <el-table-column type="index" label="序号" width="50"></el-table-column>
-      <el-table-column header-align="center" label="名称" sortable>
+      <el-table-column header-align="center" label="标题" sortable>
         <template slot-scope="scope">
           <el-popover trigger="hover" placement="bottom-start" width="300">
-            <p>{{ scope.row.summary }}</p>
+            <p>{{ scope.row.text }}</p>
             <div slot="reference" class="name-wrapper">
-              <a @href="scope.row.url">
-                <span>{{ scope.row.name }}</span>
-              </a>
+              <span>{{ scope.row.title }}</span>
             </div>
           </el-popover>
         </template>
       </el-table-column>
-      <el-table-column header-align="center" label="地址">
+      <el-table-column header-align="center" label="IP">
         <template slot-scope="scope">
-          <a @href="scope.row.url">
-            <span>{{ scope.row.url }}</span>
-          </a>
+          <span>{{ scope.row.ip }}</span>
         </template>
       </el-table-column>
       <el-table-column header-align="center" label="创建时间" sortable>
         <template slot-scope="scope">
           <span>{{ scope.row.created }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column header-align="center" label="状态">
-        <template slot-scope="scope">
-          <span>{{ getStatusName(scope.row.status) }}</span>
         </template>
       </el-table-column>
       <el-table-column header-align="center" label="操作">
@@ -121,11 +112,11 @@ export default {
     /**
      * 编辑
      */
-    onEdit (website) {
+    onEdit (log) {
       this.$router.push({
         path: "/console/log/edit",
         query: {
-          id: website.id
+          id: log.id
         }
       });
     }

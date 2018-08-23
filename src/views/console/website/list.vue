@@ -23,9 +23,9 @@
                     <el-popover trigger="hover" placement="bottom-start" width="300">
                         <p>{{ scope.row.summary }}</p>
                         <div slot="reference" class="name-wrapper">
-                            <a @href="scope.row.url">
+                            <router-link :to="scope.row.url">
                                 <span>{{ scope.row.name }}</span>
-                            </a>
+                            </router-link>
                         </div>
                     </el-popover>
                 </template>

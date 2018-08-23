@@ -1,3 +1,3 @@
 <template>
-  <section></section>
+  <section>未读消息</section>
 </template>
